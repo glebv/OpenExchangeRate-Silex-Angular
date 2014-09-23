@@ -1,0 +1,18 @@
+  div.container-fluid {
+
+    .form-group {
+      vertical-align: top;
+    }
+    .result {
+      label {
+        vertical-align: top;
+        margin-top: 7px;
+      }
+      h2 {
+        vertical-align: top;
+        margin-top: 0px;
+        display: inline-block;
+        margin-left: 10px;
+      }
+    }
+  }

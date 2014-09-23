@@ -1,0 +1,8 @@
+<?php
+
+// configure your app for the production environment
+$app['debug'] = true;
+
+$app['config'] = array(
+    'openexchangerates_app_id' => 'please_enter_key'
+);

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Open Exchange Rates</title>
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css">
+
+        <script src="/lib/angular/angular.js"></script>
+        <script src="/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="/lib/angular-money-directive/angular-money-directive.js"></script>
+        <script src="/lib/angular-cache/dist/angular-cache.js"></script>
+
+        <script src="/js/app.js"></script>
+        <script src="/js/controllers/main.js"></script>
+        <script src="/js/services/openexchangerates.js"></script>
+
+    </head>
+    <body ng-app="App" ng-controller="MainCtrl">
+        <div class="container-fluid">
+            <div class="header">
+                <h3>Exchange Rate Service</h3>
+            </div>
+            <div class="jumbotron">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label>Convert:
+                            <input autofocus ng-model="transaction.amount" class="form-control" money>
+                            <input type="text"
+                                   typeahead="currency.iso as currency.iso +' '+ currency.desc for currency in currencies | filter: $viewValue"
+                                   ng-model="transaction.baseCur" class="form-control"
+                                   typeahead-on-select = "changeCur()">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label >To:
+                            <input type="text"
+                                   typeahead="currency.iso as currency.iso +' '+ currency.desc for currency in currencies | filter: $viewValue"
+                                   ng-model="transaction.destCur" class="form-control"
+                                   typeahead-on-select = "changeDestCur($item)">
+                        </label>
+                    </div>
+                </form>
+                <div class="result">
+                    <label >Result:</label>
+                    <h2 ng-show="transaction.amount === undefined">-</h2>
+                    <h2 ng-hide="transaction.amount === undefined">{{ '{{transaction.amount * transaction.rate | currency: \'\' }}' }} {{ '{{destCur}}' }}</h2>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
