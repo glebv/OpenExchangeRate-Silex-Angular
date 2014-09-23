@@ -15,9 +15,11 @@ Installation
 ```
 cd OpenExchangeRate-Silex-Angular
 mv src/config.php.dist config.php
+place app_id into config.php
 ```
-place app_id
-
-* composer install
-* bower install
+* install vendor's lib
+```
+composer install
+bower install
+```
 * setup web server  http://silex.sensiolabs.org/doc/web_servers.html
